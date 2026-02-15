@@ -1,0 +1,314 @@
+/* --------------------------------------------- */
+        /* MODAL & NEW LAYOUT STYLES */
+        /* --------------------------------------------- */
+        #advanced-checkout {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: white; /* Full screen white background */
+            display: none;
+            z-index: 4000;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+        }
+
+        .checkout-header-ui {
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .checkout-header-ui h1 { font-family: 'Arial Black', sans-serif; font-size: 45px; color: #333; margin: 0; }
+        
+        .ui-back-btn {
+            position: absolute;
+            right: 0;
+            background: #add8e6;
+            border: 2px solid #5da5da;
+            padding: 8px 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .checkout-grid-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .ui-column-card {
+            background: #94a3b8; /* Grey card background */
+            flex: 1;
+            min-height: 450px;
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #1e293b;
+        }
+
+        .ui-column-card h3 { border-bottom: 2px solid #475569; width: 100%; text-align: center; padding-bottom: 10px; margin-top: 0; }
+
+        /* Tables Grid */
+        .table-select-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 80%; margin-top: 20px; }
+        .table-node { background: white; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .table-node.active { background: #4b2a87; color: white; }
+
+        /* Price display */
+        .ui-price-display { font-size: 48px; font-weight: bold; margin-top: 50px; }
+        .order-num-footer { margin-top: auto; text-align: center; padding-bottom: 20px; }
+        .order-num-footer h2 { margin: 5px 0; font-size: 32px; }
+
+        /* Staff select */
+        .staff-dropdown { width: 90%; padding: 12px; margin-top: 20px; border-radius: 8px; border: none; font-size: 16px; }
+
+        .ui-pay-button {
+            background: #fde68a; /* Yellow PAY button */
+            border: none;
+            padding: 15px 120px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* --------------------------------------------- */
+        /* POS MAIN STYLES */
+        /* --------------------------------------------- */
+        body { 
+            margin: 0; padding: 0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+        }
+
+        header { display: flex; align-items: center; padding: 10px 30px; background: white; border-bottom: 2px solid #ddd; flex-shrink: 0; }
+        header img.logo { height: 50px; margin-right: 15px; }
+        header .title { font-size: 24px; font-weight: bold; color: #333; }
+        .header-controls { margin-left: auto; display: flex; align-items: center; gap: 15px; }
+        .header-controls input { padding: 10px; font-size: 14px; width: 250px; border-radius: 8px; border: 2px solid #bbb; outline: none; }
+        .back-btn { background: #ff4d4d; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+
+        .container { display: grid; grid-template-columns: 240px 1fr; gap: 20px; padding: 20px 390px 20px 20px; flex-grow: 1; overflow: hidden; }
+
+        .sidebar { background: rgba(255, 255, 255, 0.9); padding: 15px; border-radius: 12px; display: flex; flex-direction: column; height: 90%; }
+        .category { padding: 12px; border-radius: 6px; cursor: pointer; margin-bottom: 8px; background: white; border: 1px solid #ddd; font-weight: 600; }
+        .category.active { background: #4b2a87; color: white; border-color: #4b2a87; }
+        
+        .size-box { margin-top: auto; background: #4b2a87; padding: 15px; border-radius: 8px; color: white; }
+        .size-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
+        .size-controls { display: flex; align-items: center; gap: 10px; }
+        .size-controls button { width: 30px; height: 30px; border-radius: 4px; border: none; cursor: pointer; font-weight: bold; }
+
+        .menu-items { display: grid; gap: 15px; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); overflow-y: auto; padding-bottom: 20px; overflow-x: hidden;}
+
+        .card { background: white; border-radius: 10px; overflow: hidden; border: 1px solid #ddd; cursor: pointer; transition: transform 0.2s; }
+        .card:hover { transform: scale(1.02); }
+        .card img { width: 100%; height: 130px; object-fit: cover; }
+        .card .info { padding: 10px; text-align: center; }
+        .card h4 { margin: 5px 0; font-size: 16px; }
+
+        .order-panel { background: rgba(255, 255, 255, 0.95); padding: 20px; border-radius: 12px; display: flex; flex-direction: column; position: fixed; right: 20px; top: 100px; width: 300px; height: calc(100vh - 170px); }
+        .order-list-container { flex-grow: 1; overflow-y: auto; margin-bottom: 15px; }
+        .order-item { background: #f8f9ff; padding: 10px; border-radius: 6px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #4b2a87; }
+        .order-item button { background: #ff4d4d; color: white; border: none; border-radius: 4px; padding: 2px 8px; cursor: pointer; }
+
+        .total-box { font-size: 22px; font-weight: bold; border-top: 2px solid #ddd; padding-top: 15px; text-align: right; }
+        .btn-action { width: 100%; padding: 12px; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .place-order-dine { background: #4b2a87; color: white; }
+        .place-order-take { background: #ff8d5a; color: white; }
+
+        /* --------------------------------------------- */
+        /* RECEIPT MODAL STYLES */
+        /* --------------------------------------------- */
+        #receipt-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            z-index: 6000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .receipt-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+            font-family: monospace;
+        }
+
+        .receipt-content h2 { margin-top: 0; color: #333; }
+        .receipt-details { text-align: left; margin: 20px 0; }
+        .receipt-total { font-weight: bold; font-size: 18px; }
+        .btn-close-receipt {
+            background: #4b2a87;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+/* --------------------------------------------- */
+/* PASSWORD MODAL STYLES */
+/* --------------------------------------------- */
+#admin-password-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    z-index: 6000;
+    justify-content: center;
+    align-items: center;
+}
+
+.password-modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.password-modal-content h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.password-input-container {
+    display: flex;
+    margin: 20px 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.password-input-container input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.password-input-container button {
+    padding: 10px 15px;
+    background: #4b2a87;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.password-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.password-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.password-buttons button:first-child {
+    background: #4b2a87;
+    color: white;
+}
+
+.password-buttons button:last-child {
+    background: #ccc;
+}
+
+/* --------------------------------------------- */
+/* ADMIN PANEL STYLES */
+/* --------------------------------------------- */
+#admin-panel {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: white;
+    display: none;
+    z-index: 5000;
+    flex-direction: column;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+    background: #4b2a87;
+    color: white;
+}
+
+.admin-header h1 {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 36px;
+    margin: 0;
+}
+
+.admin-back-btn {
+    position: absolute;
+    right: 20px;
+    background: #add8e6;
+    border: 2px solid #5da5da;
+    padding: 8px 25px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+}
+
+.admin-content {
+    display: flex;
+    flex-grow: 1;
+    padding: 20px;
+    gap: 20px;
+}
+
+.admin-functions {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.admin-btn {
+    background: #4b2a87;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.admin-btn:hover {
+    background: #3a1f6b;
+}
+
+.admin-details {
+    flex: 2;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-y: auto;
+}

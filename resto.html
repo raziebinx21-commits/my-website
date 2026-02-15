@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fast Food Express - Self-Ordering Restaurant</title>
+    <link rel="stylesheet" href="Resto.css">
+</head>
+
+<body>
+
+<div id="advanced-checkout">
+    <div class="checkout-header-ui">
+        <h1 id="ui-checkout-title">DINE IN</h1>
+        <button class="ui-back-btn" onclick="closeAdvancedCheckout()">BACK</button>
+    </div>
+
+    <div class="checkout-grid-container">
+        <div class="ui-column-card" id="ui-col-tables">
+            <h3>TABLES</h3>
+            <div class="table-select-grid">
+                <button class="table-node" onclick="setTable(1)">T1</button>
+                <button class="table-node" onclick="setTable(2)">T2</button>
+                <button class="table-node" onclick="setTable(3)">T3</button>
+                <button class="table-node" onclick="setTable(4)">T4</button>
+            </div>
+        </div>
+
+        <div class="ui-column-card">
+            <h3>ORDER PRICE</h3>
+            <div class="ui-price-display">₱<span id="ui-display-total">0</span></div>
+            <div class="order-num-footer">
+                <p>ORDER #</p>
+                <h2 id="ui-random-num">0000</h2>
+                <small>GIVE RANDOM NUMBER</small>
+            </div>
+        </div>
+
+        <div class="ui-column-card">
+            <h3>KITCHEN STAFF</h3>
+            <select class="staff-dropdown" id="staff-select">
+                <option>Chef Sean</option>
+                <option>Chef Kevin</option>
+                <option>Chef Sen</option>
+                <option>Chef Rommel</option>
+                <option>Chef Kate</option>
+                <option>Chef Ruth   </option>
+            </select>
+        </div>
+    </div>
+
+    <button class="ui-pay-button" onclick="confirmPayment()">PAY</button>
+</div>
+
+<div id="receipt-modal">
+    <div class="receipt-content">
+        <h2>RECEIPT</h2>
+        <div class="receipt-details" id="receipt-details"></div>
+        <button class="btn-close-receipt" onclick="closeReceipt()">CLOSE</button>
+    </div>
+</div>
+
+<div id="admin-password-modal">
+    <div class="password-modal-content">
+        <h2>Admin Access</h2>
+        <div class="password-input-container">
+            <input type="password" id="admin-password" placeholder="Enter password">
+            <button type="button" id="toggle-password" onclick="togglePasswordVisibility()">Show</button>
+        </div>
+        <div class="password-buttons">
+            <button onclick="checkAdminPassword()">Submit</button>
+            <button onclick="closePasswordModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="admin-panel">
+    <div class="admin-header">
+        <h1>ADMIN PANEL</h1>
+        <button class="admin-back-btn" onclick="closeAdminPanel()">BACK</button>
+    </div>
+    <div class="admin-content">
+        <div class="admin-functions">
+            <button class="admin-btn" onclick="manageMenuItems()">Manage Menu Items</button>
+            <button class="admin-btn" onclick="viewOrders()">View Orders</button>
+            <button class="admin-btn" onclick="manageStaff()">Manage Staff</button>
+            <button class="admin-btn" onclick="viewReports()">View Reports</button>
+            <button class="admin-btn" onclick="manageTables()">Manage Tables</button>
+            <button class="admin-btn" onclick="systemSettings()">System Settings</button>
+        </div>
+        <div class="admin-details" id="admin-details">
+            <p>Select a function to view details.</p>
+        </div>
+    </div>
+</div>
+
+<header>
+  <img src="https://cdn-icons-png.flaticon.com/512/732/732204.png" class="logo" />
+  <div class="title">FAST FOOD EXPRESS</div>
+  <div class="header-controls">
+    <button class="back-btn" onclick="openAdminPanel()">ADMIN</button>
+  </div>
+</header>
+
+<div class="container">
+  <div class="sidebar">
+    <h3>Categories</h3>
+    <div class="category active" onclick="filterCategory('Burgers', this)">Burgers</div>
+    <div class="category" onclick="filterCategory('Fries', this)">Fries</div>
+    <div class="category" onclick="filterCategory('Hotdog', this)">Hotdogs</div>
+    <div class="category" onclick="filterCategory('Drinks', this)">Drinks</div>
+    <div class="category" onclick="filterCategory('Addons', this)">Add-ons</div>
+    
+    <div class="size-box">
+      <div class="size-row">
+          <span>Size:</span>
+          <select id="sizeSelect">
+              <option value="s">S</option>
+              <option value="m" selected>M</option>
+              <option value="l">L</option>
+              <option value="xl">XL</option>
+          </select>
+      </div>
+      <div class="size-row">
+          <span>Quantity:</span>
+          <div class="size-controls">
+              <button onclick="changeSize('quantity', -1)">-</button>
+              <span id="quantityQty">1</span>
+              <button onclick="changeSize('quantity', 1)">+</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-items" id="menuContainer"></div>
+
+  <div class="order-panel">
+    <h3 style="margin-top:0">CURRENT ORDER</h3>
+    <div class="order-list-container">
+      <div id="orderList"></div>
+    </div>
+    <div class="total-box">Total: ₱<span id="total">0</span></div>
+
+    <button class="btn-action place-order-dine" onclick="openAdvancedUI('Dine-In')">DINE-IN</button>
+    <button class="btn-action place-order-take" onclick="openAdvancedUI('Take-Out')">TAKE-OUT</button>
+    <button class="btn-action" style="background:#eee; color:#666;" onclick="clearCart()">Clear Order</button>
+  </div>
+</div>
+
+<script src="Resto.js"></script>
+</body>
+</html>
+SEAN SYSTEM.COM
